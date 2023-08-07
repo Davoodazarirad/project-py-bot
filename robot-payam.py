@@ -43,34 +43,9 @@ def print_message(message):
 
 
 def text_to_voice(message):
-    seda = gTTS(nm)
-    seda.save(seda.mp3)
-
-
-# def name(message):
-#     global voice
-#     voice = message.audio
-#     robot.send_message(message.chat.id, f"متن شما به صورت زیر است:\n \n \n \n \n \n {nm}")
-
-
-
-# @robot.message_handler(commands=['ersale_matn'], func= lambda m: True)
-# def daryafte_matn(message):
-#     global msg
-#     msg = robot.reply_to(message.chat.id, "Matn khod ra vared namaeeid:")
-#     robot.register_next_handler(msg , seda)
-#     # seda = gTTS(msg, lang='en', slow=False)
-#     # seda.save(msg.mp3)
-
-
-
-
-# def seda(message):
-#     seda = message.text
-#     seda = gTTS(msg, lang='en', slow=False)
-#     seda.save(msg.mp3)
-#     robot.send_message(message.chat.id, seda.mp3)
-
+    seda = gTTS(message.text)
+    seda.save('text_voice.mp3')
+    robot.send_audio(message.chat.id, open("F:/python/project-py-bot/text_voice.mp3", 'rb'))
 
 
 robot.infinity_polling()

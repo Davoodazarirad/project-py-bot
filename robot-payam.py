@@ -32,18 +32,18 @@ def info(message):
     if message.text == "ارسال متن":
         global msg
         msg = robot.send_message(message.chat.id, "متن خود را تایپ نمایید: ")
-        robot.register_next_step_handler(msg, name)
+        robot.register_next_step_handler(msg, print_message)
+        robot.register_next_step_handler(msg, text_to_voice)
 
 
-def name(message):
+def print_message(message):
     global nm
     nm = message.text
     robot.send_message(message.chat.id, f"متن شما به صورت زیر است:\n \n \n \n \n \n {nm}")
 
 
-def seda(message):
-    seda = gTTS(name)
-    save = input(seda)
+def text_to_voice(message):
+    seda = gTTS(nm)
     seda.save(seda.mp3)
 
 

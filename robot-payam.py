@@ -6,11 +6,12 @@ robot = telebot.TeleBot("6306328034:AAEr4XvsEeWRAMT-QyO1rQY6iRvCBzW5fWo")
 
 keyboard = telebot.types.ReplyKeyboardMarkup(resize_keyboard=True, row_width=2)
 keyboard.add("ارسال متن")
-
+nm=()
+msg=()
 
 @robot.message_handler(commands=['start'])
 def send_welcome(message):
-    robot.send_message(message.chat.id, "سلام \n \n راهنمای ربات به صورت دستورات زیر است: \n \n /help \n /contact \n /about \n /ersale_matn")
+    robot.send_message(message.chat.id, "سلام \n \n راهنمای ربات به صورت دستورات زیر است: \n \n /help \n\n /contact \n\n /about \n\n /ersale_matn")
 
 
 @robot.message_handler(commands=['help'])
@@ -30,14 +31,14 @@ def about_me(message):
 @robot.message_handler(func= lambda m: True)
 def info(message):
     if message.text == "ارسال متن":
-        global msg
+        #global msg
         msg = robot.send_message(message.chat.id, "متن خود را تایپ نمایید: ")
         robot.register_next_step_handler(msg, print_message)
         robot.register_next_step_handler(msg, text_to_voice)
 
 
 def print_message(message):
-    global nm
+    #global nm be jaye in dar khate 9 yek moteghayer tarif kardim
     nm = message.text
     robot.send_message(message.chat.id, f"متن شما به صورت زیر است:\n \n \n \n \n \n {nm}")
 
